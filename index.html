@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AgentBridge — Human approval for AI agents</title>
-<meta name="description" content="AgentBridge is a browser extension that adds a human approval step between AI agents and your accounts.">
+<meta name="description" content="AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser.">
 <style>
   body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; line-height: 1.6; }
   main { max-width: 640px; margin: 0 auto; padding: 72px 24px 48px; }
@@ -23,15 +23,18 @@
 <main>
   <h1>AgentBridge</h1>
   <p class="tag">Human approval for AI agents.</p>
-  <p>AgentBridge is a browser extension that puts a human approval step between AI agents and your accounts — nothing happens without your explicit OK.</p>
+  <p>AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — with an explicit approval from you before every single action. Nothing happens without your OK, and every action is logged.</p>
   <h2>Why it exists</h2>
-  <p>AI agents can do real work — but you shouldn't let one touch your accounts without a check in the loop. AgentBridge is that check: every sensitive action pauses until you approve it, and every approval is logged.</p>
+  <p>AI agents are useful, but letting one touch your browser unattended is a bad idea. AgentBridge is a simple check in the loop: every sensitive action pauses until you approve it. It was built as a practical tool for people who work with AI agents every day.</p>
   <h2>Features</h2>
   <ul>
-    <li>Approval prompts before agent actions</li>
+    <li>Approval prompts before every agent action</li>
     <li>Full activity log of what the agent did</li>
-    <li>Works with any agent that supports approval flows</li>
+    <li>Works with any agent that speaks WebSocket</li>
+    <li>Local only — the bridge runs on 127.0.0.1, no cloud, no accounts</li>
   </ul>
+  <h2>About</h2>
+  <p>AgentBridge is a free, open project by the people at <a href="https://yardwork.dev">YardWork</a>. We build practical tools for working with AI agents.</p>
   <p><a href="privacy.html">Privacy policy</a></p>
 </main>
 <footer>

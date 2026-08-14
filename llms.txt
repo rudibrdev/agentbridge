@@ -1,0 +1,19 @@
+# AgentBridge
+
+> Human approval for AI agents.
+
+AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — with an explicit approval from you before every single action. Nothing happens without your OK, and every action is logged.
+
+## Key facts
+
+- Local only: the bridge runs on 127.0.0.1, no cloud, no accounts
+- Works with any agent that speaks WebSocket
+- Approval prompts before every agent action
+- Full activity log of what the agent did
+- Free and open
+
+## Links
+
+- [AgentBridge](https://rudibrdev.github.io/agentbridge-site/)
+- [Privacy policy](https://rudibrdev.github.io/agentbridge-site/privacy.html)
+- [YardWork](https://yardwork.dev)
