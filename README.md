@@ -2,9 +2,9 @@
 
 AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — but **every action pauses until you approve it**. Nothing happens without your explicit OK, and everything the agent did is logged.
 
-- Website: https://rudibrdev.github.io/agentbridge-site/
+- Website: https://rudibrdev.github.io/agentbridge/
 - Chrome Web Store: https://chromewebstore.google.com/
-- Privacy policy: https://rudibrdev.github.io/agentbridge-site/privacy.html
+- Privacy policy: https://rudibrdev.github.io/agentbridge/privacy.html
 - Built by: [YardWork](https://yardwork.dev)
 
 ## Why it exists
@@ -67,4 +67,4 @@ AgentBridge is a free, open project by the people at [YardWork](https://yardwork
 
 ## Privacy
 
-See the [privacy policy](https://rudibrdev.github.io/agentbridge-site/privacy.html).
+See the [privacy policy](https://rudibrdev.github.io/agentbridge/privacy.html).

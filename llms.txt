@@ -14,8 +14,8 @@
 - Built by: YardWork (https://yardwork.dev)
 
 ## Links
-- Site: https://rudibrdev.github.io/agentbridge-site/
-- Privacy policy: https://rudibrdev.github.io/agentbridge-site/privacy.html
+- Site: https://rudibrdev.github.io/agentbridge/
+- Privacy policy: https://rudibrdev.github.io/agentbridge/privacy.html
 - Chrome Web Store: https://chromewebstore.google.com/
 - YardWork: https://yardwork.dev
 
