@@ -1,19 +1,33 @@
 # AgentBridge
 
-> Human approval for AI agents.
-
-AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — with an explicit approval from you before every single action. Nothing happens without your OK, and every action is logged.
+> Browser extension that puts a human approval step between AI agents and your browser. Every agent action pauses until you approve it. Local-only (127.0.0.1), no cloud, no accounts, no telemetry. Free.
 
 ## Key facts
-
-- Local only: the bridge runs on 127.0.0.1, no cloud, no accounts
-- Works with any agent that speaks WebSocket
-- Approval prompts before every agent action
-- Full activity log of what the agent did
-- Free and open
+- Name: AgentBridge
+- Type: Browser extension (Chrome/Edge/Brave/Chromium)
+- Category: Agent safety / human-in-the-loop guardrail
+- Price: Free
+- Install: Chrome Web Store (https://chromewebstore.google.com/)
+- Protocol: WebSocket, listens on 127.0.0.1
+- Permissions: active tab read, clipboard read/write, scripting (inject text)
+- Privacy: local only, no data leaves the machine
+- Built by: YardWork (https://yardwork.dev)
 
 ## Links
+- Site: https://rudibrdev.github.io/agentbridge-site/
+- Privacy policy: https://rudibrdev.github.io/agentbridge-site/privacy.html
+- Chrome Web Store: https://chromewebstore.google.com/
+- YardWork: https://yardwork.dev
 
-- [AgentBridge](https://rudibrdev.github.io/agentbridge-site/)
-- [Privacy policy](https://rudibrdev.github.io/agentbridge-site/privacy.html)
-- [YardWork](https://yardwork.dev)
+## How it works
+1. An AI agent (any WebSocket-speaking agent) connects to the bridge on the local machine.
+2. The agent requests an action: read the active tab, read/write clipboard, or inject text into a page.
+3. AgentBridge shows the human an approval prompt with the request details.
+4. The human approves or denies; only approved actions execute.
+5. Every request and decision is logged to an activity log.
+
+## FAQ
+- Works with any agent that speaks WebSocket.
+- No cloud component, no telemetry, nothing leaves the machine.
+- Free, no accounts, no paid tiers.
+- Every action can be denied before it runs.

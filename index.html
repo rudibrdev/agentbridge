@@ -4,41 +4,109 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AgentBridge — Human approval for AI agents</title>
-<meta name="description" content="AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser.">
+<meta name="description" content="AgentBridge is a small browser extension that puts a human approval step between AI agents and your browser. Every agent action pauses until you approve it. Local-only, no cloud, no accounts.">
+<meta name="keywords" content="AI agents, browser extension, human approval, guardrails, agent safety, Chrome extension">
+<link rel="canonical" href="https://rudibrdev.github.io/agentbridge-site/">
 <style>
-  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; line-height: 1.6; }
-  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 48px; }
-  h1 { font-size: 2.2rem; letter-spacing: -0.02em; margin: 0 0 8px; }
-  .tag { color: #6b7280; font-size: 1.05rem; margin-bottom: 32px; }
-  h2 { font-size: 1.25rem; margin: 40px 0 8px; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 64px 24px 48px; }
+  h1 { font-size: 2.4rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .tag { color: #6b7280; font-size: 1.1rem; margin-bottom: 28px; }
+  h2 { font-size: 1.3rem; margin: 44px 0 10px; letter-spacing: -0.01em; }
+  h3 { font-size: 1.05rem; margin: 24px 0 6px; }
   p { margin: 0 0 12px; color: #374151; }
-  ul { padding-left: 20px; color: #374151; }
+  ul, ol { padding-left: 22px; color: #374151; }
   li { margin-bottom: 8px; }
-  footer { max-width: 640px; margin: 0 auto; padding: 24px; border-top: 1px solid #e5e7eb; font-size: 0.9rem; color: #6b7280; }
-  footer a { color: #6b7280; text-decoration: none; }
+  .cta { display: inline-block; background: #111827; color: #fff; padding: 13px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 8px 0 4px; }
+  .cta:hover { background: #1f2937; }
+  .cta-note { font-size: 0.85rem; color: #6b7280; margin-top: 6px; }
+  code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+  footer { max-width: 720px; margin: 0 auto; padding: 24px; border-top: 1px solid #e5e7eb; font-size: 0.9rem; color: #6b7280; }
+  footer a { color: #111827; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AgentBridge",
+  "operatingSystem": "Chrome, Edge, Brave, Chromium",
+  "applicationCategory": "DeveloperApplication",
+  "description": "Browser extension that puts a human approval step between AI agents and your browser.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://rudibrdev.github.io/agentbridge-site/"
+}
+</script>
 </head>
 <body>
 <main>
   <h1>AgentBridge</h1>
   <p class="tag">Human approval for AI agents.</p>
-  <p>AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — with an explicit approval from you before every single action. Nothing happens without your OK, and every action is logged.</p>
+
+  <p>AgentBridge is a small browser extension that adds a human approval step between AI agents and your browser. It lets an agent read the active tab, read and write the clipboard, and inject text into a page — but <strong>every action pauses until you approve it</strong>. Nothing happens without your explicit OK, and everything the agent did is logged.</p>
+
+  <a class="cta" href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Add to Chrome</a>
+  <p class="cta-note">Free. No account required. Runs entirely on your machine.</p>
+
   <h2>Why it exists</h2>
-  <p>AI agents are useful, but letting one touch your browser unattended is a bad idea. AgentBridge is a simple check in the loop: every sensitive action pauses until you approve it. It was built as a practical tool for people who work with AI agents every day.</p>
-  <h2>Features</h2>
+  <p>AI agents are useful, but letting one operate your browser unattended is a bad idea. Agents can click things, paste text, fill forms, or copy sensitive data — often faster than you can react. AgentBridge is a simple check in the loop: the agent requests an action, you see exactly what it wants to do, and you decide. Approve it, or stop it.</p>
+
+  <h2>What it does</h2>
   <ul>
-    <li>Approval prompts before every agent action</li>
-    <li>Full activity log of what the agent did</li>
-    <li>Works with any agent that speaks WebSocket</li>
-    <li>Local only — the bridge runs on 127.0.0.1, no cloud, no accounts</li>
+    <li><strong>Approval prompts</strong> — a clear dialog appears before every agent action, showing exactly what the agent wants to do.</li>
+    <li><strong>Activity log</strong> — a full history of every action the agent requested and what you decided.</li>
+    <li><strong>Clipboard control</strong> — the agent can read and write the clipboard, but only with your permission each time.</li>
+    <li><strong>Page interaction</strong> — the agent can inject text into a page (form filling, autocomplete) only after you approve.</li>
   </ul>
+
+  <h2>How it works</h2>
+  <ol>
+    <li>An AI agent (any agent that speaks WebSocket) connects to the bridge on your machine.</li>
+    <li>The agent requests an action — e.g. "read the current tab", "copy this to clipboard", "type this into the form".</li>
+    <li>AgentBridge shows you an approval prompt with the details of the request.</li>
+    <li>You approve or deny. Only approved actions execute.</li>
+    <li>Every request and decision is written to the activity log.</li>
+  </ol>
+
+  <div class="box">
+    <h3 style="margin-top:0">Local only</h3>
+    <p>The bridge listens on <code>127.0.0.1</code> — your machine only. No cloud, no accounts, no telemetry. There is nothing to sign up for and nothing leaves your computer.</p>
+  </div>
+
+  <h2>What it needs</h2>
+  <p>AgentBridge is a small extension with focused permissions:</p>
+  <ul>
+    <li><strong>Read the active tab</strong> — so the agent can see the page you are looking at.</li>
+    <li><strong>Clipboard read &amp; write</strong> — for copy/paste workflows.</li>
+    <li><strong>Scripting</strong> — to inject text into pages you approve.</li>
+  </ul>
+  <p>No broad "read all websites" permission, no data collection, no third-party servers.</p>
+
+  <h2>Getting started</h2>
+  <ul>
+    <li>Install AgentBridge from the <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener">Chrome Web Store</a>.</li>
+    <li>Start the bridge (a small local process) on your machine.</li>
+    <li>Point your agent at <code>ws://127.0.0.1:&lt;port&gt;</code>.</li>
+    <li>Approve the first prompt and you're running.</li>
+  </ul>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Does AgentBridge work with any agent?</h3>
+  <p>Yes. Any agent that can speak WebSocket can use it. There is no vendor lock-in and no proprietary protocol.</p>
+  <h3>Does my data leave my machine?</h3>
+  <p>No. The bridge runs locally on <code>127.0.0.1</code>. There is no cloud component and no telemetry. See the <a href="privacy.html">privacy policy</a>.</p>
+  <h3>Is it really free?</h3>
+  <p>Yes — free, with no accounts and no paid tiers.</p>
+  <h3>Can I deny an action the agent already asked for?</h3>
+  <p>Yes. Every request waits for your decision. Deny it and the action never runs.</p>
+
   <h2>About</h2>
-  <p>AgentBridge is a free, open project by the people at <a href="https://yardwork.dev">YardWork</a>. We build practical tools for working with AI agents.</p>
+  <p>AgentBridge is a free, open project by the people at <a href="https://yardwork.dev">YardWork</a> — practical tools for working with AI agents.</p>
   <p><a href="privacy.html">Privacy policy</a></p>
 </main>
 <footer>
-  <p>&copy; 2026 <a href="https://yardwork.dev">YardWork</a></p>
+  <p>&copy; 2026 <a href="https://yardwork.dev">YardWork</a> · <a href="privacy.html">Privacy</a></p>
 </footer>
 </body>
 </html>
